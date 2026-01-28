@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Colors:</title>
+</head>
+<body>
+    <div class="color">Hello, World</div>
+    
+    <video id="camera" autoplay playsinline></video>
+
+    <button id="start">Start camera</button>
+
+</body>
+<script>
+    /** @type {CanvasRenderingContext2D} */
+    const video = document.getElementById("camera");
+
+    document.getElementById("start").onclick = async function () {
+        try {
+            const stream = await navigator.mediaDevices.getUserMedia({
+                video: true,
+                audio: false
+            });
+            console.log(stream);
+            
+
+            video.srcObject = stream;
+
+        } catch (err) {
+            console.error("Camera access denied:", err);
+        }
+    };
+
+    // console.log(video);
+    
+
+</script>
+</html>

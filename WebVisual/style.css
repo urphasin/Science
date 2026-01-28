@@ -1,0 +1,23 @@
+.color {
+    margin-block: 100px;
+    width: 500px;
+    height: 50px;
+    display: block;
+    color: hsla(240, 100%, 80%, 1);
+
+    background-color: hsla(120, 100%, 80%, 1);
+}
+
+video {
+    border: 1px solid grey;
+}
+
+video, #start {
+    display: block;
+    margin-block: 10px;
+    
+    michelle.mooney@slc.gov
+
+    batula
+
+}
