@@ -25,18 +25,26 @@ struct Node* BuildFiveLayerTree() {
         int LevelSize = q.size();
 
         for (int i = 0; i < LevelSize; i++) {
+            Node* current = q.front();
+            q.pop();
 
+            current->left = new Node(value++);
+            current->right = new Node(value++);
+
+            q.push(current->left);
+            q.push(current->right);
         }
     }
-} 
+    return root;
+}
 
 void PreOrder__Iterative(struct Node* root) {
     if (!root) return;
 
     stack<struct Node*> ST;
     ST.push(root);
-    
-    while(!ST.empty()) {
+
+    while (!ST.empty()) {
         struct Node* node = ST.top();
         ST.pop();
 
@@ -71,9 +79,34 @@ void InOrder__Iterative(struct Node* root) {
 
 
 void PostOrder__Iterative(struct Node* root) {
-    
+    if (!root) return;
+
+    stack<Node*> st;
+    Node* current = root;
+    Node* lastVisited = nullptr;
+
+    while (current || !st.empty()) {
+        if (current) {
+            st.push(current);
+            current = current->left;
+        }
+        else {
+            Node* peek = st.top();
+
+            if (peek->right && lastVisited != peek->right) {
+                current = peek->right;
+            }
+            else {
+                cout << peek->value << " ";
+                lastVisited = peek;
+                st.pop();
+            }
+        }
+    }
+
 }
 
 int main() {
+
     
 }
