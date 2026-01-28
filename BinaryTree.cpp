@@ -81,7 +81,7 @@ void InOrder__Iterative(struct Node* root) {
 void PostOrder__Iterative(struct Node* root) {
     if (!root) return;
 
-    stack<Node*> st;
+    stack<struct Node*> st;
     Node* current = root;
     Node* lastVisited = nullptr;
 
@@ -91,7 +91,7 @@ void PostOrder__Iterative(struct Node* root) {
             current = current->left;
         }
         else {
-            Node* peek = st.top();
+            struct Node* peek = st.top();
 
             if (peek->right && lastVisited != peek->right) {
                 current = peek->right;
